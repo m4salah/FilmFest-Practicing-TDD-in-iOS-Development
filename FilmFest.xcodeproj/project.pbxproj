@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D9042059275BCB0600A03009 /* MovieCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9042058275BCB0600A03009 /* MovieCellTableViewCell.swift */; };
 		D95DF9E1275905C50055C971 /* LibraryViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95DF9E0275905C50055C971 /* LibraryViewControllerTests.swift */; };
 		D95DF9E4275921BB0055C971 /* MovieLibraryDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95DF9E3275921BB0055C971 /* MovieLibraryDataService.swift */; };
 		D95DF9E7275939FB0055C971 /* MovieLibraryDataServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95DF9E6275939FB0055C971 /* MovieLibraryDataServiceTests.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D9042058275BCB0600A03009 /* MovieCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCellTableViewCell.swift; sourceTree = "<group>"; };
 		D95DF9E0275905C50055C971 /* LibraryViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewControllerTests.swift; sourceTree = "<group>"; };
 		D95DF9E3275921BB0055C971 /* MovieLibraryDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieLibraryDataService.swift; sourceTree = "<group>"; };
 		D95DF9E6275939FB0055C971 /* MovieLibraryDataServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieLibraryDataServiceTests.swift; sourceTree = "<group>"; };
@@ -88,6 +90,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D9042057275BCAE400A03009 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D9042058275BCB0600A03009 /* MovieCellTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		D95DF9E2275921810055C971 /* Data Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +137,7 @@
 		D984397B2756B63C00B261E7 /* FilmFest */ = {
 			isa = PBXGroup;
 			children = (
+				D9042057275BCAE400A03009 /* Views */,
 				D95DF9E2275921810055C971 /* Data Service */,
 				D98439B12756C0C400B261E7 /* Controllers */,
 				D98439B02756C0BB00B261E7 /* Models */,
@@ -330,6 +341,7 @@
 				D95DF9E4275921BB0055C971 /* MovieLibraryDataService.swift in Sources */,
 				D98439B72756C21F00B261E7 /* MovieManager.swift in Sources */,
 				D98439AF2756B6E700B261E7 /* Movie.swift in Sources */,
+				D9042059275BCB0600A03009 /* MovieCellTableViewCell.swift in Sources */,
 				D984397F2756B63C00B261E7 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

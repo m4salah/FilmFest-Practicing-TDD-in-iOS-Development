@@ -12,7 +12,7 @@ class MovieLibraryDataServiceTests: XCTestCase {
 
     var sut: MovieLibraryDataService!
     var libraryTableView: UITableView!
-    
+    var libraryVC: LibraryViewController!
     let fightClub = Movie(title: "Figh Club")
     let perfectStranger = Movie(title: "Perfect Strangers")
     let mousa = Movie(title: "Mousa")
@@ -22,7 +22,9 @@ class MovieLibraryDataServiceTests: XCTestCase {
         
         sut = MovieLibraryDataService()
         sut.movieManager = MovieManager()
-        libraryTableView = UITableView()
+        libraryVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "LibraryViewControllerID") as LibraryViewController
+        _ = libraryVC.view
+        libraryTableView = libraryVC.libraryTableView
         libraryTableView.delegate = sut
         libraryTableView.dataSource = sut
         
@@ -62,4 +64,38 @@ class MovieLibraryDataServiceTests: XCTestCase {
         XCTAssertEqual(libraryTableView.numberOfRows(inSection: 1), 2)
 
     }
+    
+    // MARK: - Cells
+    func testCell_RowAtIndex_ReturnsMovieCell() {
+        sut.movieManager?.addMovie(mousa)
+        libraryTableView.reloadData()
+        
+        let cell = libraryTableView.cellForRow(at: IndexPath(row: 0, section: 0))
+        XCTAssertTrue(cell is MovieTableViewCell)
+    }
+    
+    func testCell_ShouldDequeueCell() {
+        let mock = TableViewMock()
+        mock.delegate = sut
+        mock.dataSource = sut
+        
+        mock.register(MovieTableViewCell.self, forCellReuseIdentifier: "movieCell")
+        
+        sut.movieManager?.addMovie(fightClub)
+        mock.reloadData()
+        _ = mock.cellForRow(at: IndexPath(row: 0, section: 0))
+        XCTAssertTrue(mock.cellDequeuedProperly)
+    }
+}
+
+extension MovieLibraryDataServiceTests {
+    class TableViewMock: UITableView {
+        var cellDequeuedProperly = false
+        
+        override func dequeueReusableCell(withIdentifier identifier: String, for indexPath: IndexPath) -> UITableViewCell {
+            cellDequeuedProperly = true
+            return super.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+        }
+    }
+    
 }

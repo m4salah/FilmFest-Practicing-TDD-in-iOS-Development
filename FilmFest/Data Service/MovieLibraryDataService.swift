@@ -25,7 +25,7 @@ class MovieLibraryDataService: NSObject, UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        return tableView.dequeueReusableCell(withIdentifier: "movieCell", for: indexPath)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
