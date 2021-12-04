@@ -49,4 +49,17 @@ class MovieLibraryDataServiceTests: XCTestCase {
         XCTAssertEqual(libraryTableView.numberOfRows(inSection: 0), 3)
 
     }
+    
+    // MARK: - Section Two Row Count
+    func testTableViewSectionTwoCount_ReturnsMoviesSeenCount() {
+        sut.movieManager?.addMovie(fightClub)
+        sut.movieManager?.addMovie(perfectStranger)
+        sut.movieManager?.checkOffMovieAt(index: 0)
+        
+        XCTAssertEqual(libraryTableView.numberOfRows(inSection: 1), 1)
+        sut.movieManager?.checkOffMovieAt(index: 0)
+        libraryTableView.reloadData()
+        XCTAssertEqual(libraryTableView.numberOfRows(inSection: 1), 2)
+
+    }
 }
