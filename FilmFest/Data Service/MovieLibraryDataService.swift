@@ -7,16 +7,20 @@
 
 import UIKit
 
+enum LibrarySection: Int {
+    case MoviesToSeeCount, MoviesSeenCount
+}
 class MovieLibraryDataService: NSObject, UITableViewDelegate, UITableViewDataSource {
     var movieManager: MovieManager?
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-            case 0:
+        guard let librarySection = LibrarySection(rawValue: section) else {
+            fatalError()
+        }
+        switch librarySection {
+            case .MoviesToSeeCount:
                 return movieManager?.moviesToSeeCount ?? 0
-            case 1:
+            case .MoviesSeenCount:
                 return movieManager?.moviesSeenCount ?? 0
-            default:
-                return 0
         }
     }
     
