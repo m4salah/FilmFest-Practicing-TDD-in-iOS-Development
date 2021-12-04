@@ -22,7 +22,7 @@ class MovieManager {
 
 
 extension MovieManager {
-    func AddMovie(_ movie: Movie) {
+    func addMovie(_ movie: Movie) {
         if moviesToSeeArray.contains(movie) {
             return
         }

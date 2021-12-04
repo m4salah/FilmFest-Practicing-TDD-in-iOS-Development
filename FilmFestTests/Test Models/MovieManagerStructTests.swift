@@ -33,19 +33,19 @@ class MovieManagerStructTests: XCTestCase {
     
     // MARK: - Add & Query movies
     func testAdd_MoviesToSee_ReturnsOne() {
-        sut.AddMovie(fightClubsMovie)
+        sut.addMovie(fightClubsMovie)
         XCTAssertEqual(sut.moviesToSeeCount, 1)
     }
     
     func testQuery_ReturnsMovieAtIndex() {
-        sut.AddMovie(perfectStarngersMovie)
+        sut.addMovie(perfectStarngersMovie)
         let movieQueries = sut.movieAt(index: 0)
         XCTAssertEqual(perfectStarngersMovie.title, movieQueries.title)
     }
     
     // MARK: - Checking off
     func testCheckOffMovie_UpdatesMovieManagerCount() {
-        sut.AddMovie(perfectStarngersMovie)
+        sut.addMovie(perfectStarngersMovie)
         sut.checkOffMovieAt(index: 0)
 
         XCTAssertEqual(sut.moviesToSeeCount, 0)
@@ -54,8 +54,8 @@ class MovieManagerStructTests: XCTestCase {
     }
     
     func testCheckOffMovie_RemoveMovieFromArray() {
-        sut.AddMovie(perfectStarngersMovie)
-        sut.AddMovie(fightClubsMovie)
+        sut.addMovie(perfectStarngersMovie)
+        sut.addMovie(fightClubsMovie)
 
         sut.checkOffMovieAt(index: 0)
 
@@ -63,7 +63,7 @@ class MovieManagerStructTests: XCTestCase {
     }
     
     func testCheckOffMovie_ReturnMovieAtIndex() {
-        sut.AddMovie(perfectStarngersMovie)
+        sut.addMovie(perfectStarngersMovie)
         sut.checkOffMovieAt(index: 0)
         
         let movieQueried = sut.checkedOffMovieAt(index: 0)
@@ -73,8 +73,8 @@ class MovieManagerStructTests: XCTestCase {
     
     // MARK: - Clearing arrays
     func testClearArray_ReturnsArrayCountOfZero() {
-        sut.AddMovie(fightClubsMovie)
-        sut.AddMovie(perfectStarngersMovie)
+        sut.addMovie(fightClubsMovie)
+        sut.addMovie(perfectStarngersMovie)
         
         sut.checkOffMovieAt(index: 0)
         
@@ -90,8 +90,8 @@ class MovieManagerStructTests: XCTestCase {
     
     // MARK: - Duplicates
     func testDuplicatedMovies_ShouldNotBeAddedToArray() {
-        sut.AddMovie(fightClubsMovie)
-        sut.AddMovie(fightClubsMovie)
+        sut.addMovie(fightClubsMovie)
+        sut.addMovie(fightClubsMovie)
         
         XCTAssertEqual(sut.moviesToSeeCount, 1)
     }
