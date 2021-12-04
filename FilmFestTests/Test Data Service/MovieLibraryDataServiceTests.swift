@@ -20,6 +20,11 @@ class MovieLibraryDataServiceTests: XCTestCase {
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         
+        sut = MovieLibraryDataService()
+        libraryTableView = UITableView()
+        libraryTableView.delegate = sut
+        libraryTableView.dataSource = sut
+        
     }
 
     override func tearDownWithError() throws {
@@ -28,11 +33,7 @@ class MovieLibraryDataServiceTests: XCTestCase {
     
     // MARK: - Sections
     func testTableViewSectionsCount_ReturnsTow() {
-        let dataService = MovieLibraryDataService()
-        let tableView = UITableView()
-        tableView.dataSource = dataService
-        
-        let sectionCount = tableView.numberOfSections
+        let sectionCount = libraryTableView.numberOfSections
         XCTAssertEqual(sectionCount, 2)
     }
     
